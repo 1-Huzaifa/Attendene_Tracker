@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, jsonify , Response
-from deepface import DeepFace
+#from deepface import DeepFace
 from flask_cors import CORS
 import numpy as np
 import cv2
