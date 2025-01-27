@@ -6,7 +6,7 @@ import numpy as np
 import cv2
 app = Flask(__name__)
 CORS(app)
-registered_faces_path = "registered_faces/"  # Folder containing registered faces
+#registered_faces_path = "registered_faces/"  # Folder containing registered faces
  
 #@app.route('/match', methods=['POST'])
 #def match_faces():
@@ -36,10 +36,10 @@ registered_faces_path = "registered_faces/"  # Folder containing registered face
 #                        "distance": result["distance"]
 #                    })
  
-        return jsonify({"message": "No match found"})
+#        return jsonify({"message": "No match found"})
  
-    except Exception as e:
-        return jsonify({"error": str(e)}), 400
+ #   except Exception as e:
+ #       return jsonify({"error": str(e)}), 400
  
 @app.route('/',methods=['POST'])
 def greet():
