@@ -41,7 +41,7 @@ CORS(app)
  #   except Exception as e:
  #       return jsonify({"error": str(e)}), 400
  
-@app.route('/',methods=['POST'])
+@app.route('/coord',methods=['POST'])
 def greet():
     data = request.get_json()
     if not data:
@@ -52,7 +52,13 @@ def greet():
     print(f"{lat} is {long} years old")
     
     return jsonify({"message":f" Recieved Successfully at Back end {lat}","Lattitude":lat , "longitude":long }) , 200
-
+ 
+@app.route('/',methods=['GET'])
+def greet():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error":"Something Gone Wrong"}), 400
+    return "Backend is Running"
 
 
 @app.route("/upload", methods=["POST"])
