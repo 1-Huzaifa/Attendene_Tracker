@@ -54,7 +54,7 @@ def greet():
     return jsonify({"message":f" Recieved Successfully at Back end {lat}","Lattitude":lat , "longitude":long }) , 200
  
 @app.route('/',methods=['GET'])
-def greet():
+def home():
     data = request.get_json()
     if not data:
         return jsonify({"error":"Something Gone Wrong"}), 400
