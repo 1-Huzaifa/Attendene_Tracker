@@ -27,7 +27,7 @@ CORS(app)
 #                result = DeepFace.verify(
 #                    img1_path=incoming_image_path,
 #                    img2_path=registered_face_path
-                )
+#                )
                 
                 # If a match is found
 #                if result["verified"]:
