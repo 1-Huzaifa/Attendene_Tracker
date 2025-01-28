@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request, jsonify , Response
+import base64
 from deepface import DeepFace
 from flask_cors import CORS
 import numpy as np
@@ -82,6 +83,26 @@ def upload_file():
     _, buffer = cv2.imencode(".jpg", image)
     response = Response(buffer.tobytes(), content_type="image/jpeg")
     return response
+
+@app.route('/upload-image', methods=['POST'])
+def upload_image():
+    try:
+        data = request.json
+        image_data = data.get('image')  # Base64 string of the image
+        if not image_data:
+            return jsonify({"error": "No image provided"}), 400
+ 
+        # Decode the Base64 string
+        image_bytes = base64.b64decode(image_data)
+ 
+        # Save the image to a file
+        file_path = "uploaded_image.jpg"
+        with open(file_path, "wb") as image_file:
+            image_file.write(image_bytes)
+ 
+        return jsonify({"message": "Image received and saved successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == '__main__':
